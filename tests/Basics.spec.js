@@ -1,4 +1,5 @@
 const {test, expect} = require('@playwright/test');
+const loginData = require('../data/loginData.json')
 
 test('First playwright Test',async ({browser,page})=>
 {
@@ -6,7 +7,7 @@ test('First playwright Test',async ({browser,page})=>
     //const page = await context.newPage();
     await page.goto("https://www.flipkart.in/");
     
-    await page.locator('input.jwCbxy').fill('9176151068');
+    await page.locator('input.jwCbxy').fill(loginData.phone);
     await page.getByRole('button',{name:'Continue'}).click();
 
     await page.pause();
