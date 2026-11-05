@@ -1,0 +1,9 @@
+{
+  "baseUrl": "https://www.flipkart.in/",
+  "searches": [
+    { "id": "TC01", "term": "iPhone 18",    "description": "Premium phone search" },
+    { "id": "TC02", "term": "Samsung S25",  "description": "Android flagship search" },
+    { "id": "TC03", "term": "OnePlus 15",   "description": "Mid-range phone search" },
+    { "id": "TC04", "term": "laptop",       "description": "Generic category search" }
+  ]
+}

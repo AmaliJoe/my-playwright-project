@@ -12,21 +12,20 @@ const config = ({
   {
     timeout: 5000,
   },
-reporter: 'html',
+reporter: [
+
+  ['html', { open: 'never' }],
+  ['allure-playwright'],
+],
   
   use: {
-
-      browserName: 'chromium',
-      headless : false,
-      trace: 'on-first-retry',
-        launchOptions: {
-          slowMo: 2000, // slows down every action by 1000ms (1 second)
-  },
-    
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-
-  },
-
+  browserName: 'chromium',
+  headless: !!process.env.CI,
+  trace: 'on-first-retry',
+  screenshot: 'only-on-failure',     // added
+  video: 'retain-on-failure',        // added
+     launchOptions: { slowMo: process.env.CI ? 0 : 2000 },
+},
   
 });
 module.exports = config
