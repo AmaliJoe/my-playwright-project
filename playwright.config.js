@@ -13,19 +13,18 @@ const config = ({
     timeout: 5000,
   },
 reporter: [
+
   ['html', { open: 'never' }],
   ['allure-playwright'],
 ],
   
   use: {
   browserName: 'chromium',
-  headless: false,
+  headless: !!process.env.CI,
   trace: 'on-first-retry',
   screenshot: 'only-on-failure',     // added
   video: 'retain-on-failure',        // added
-  launchOptions: {
-    slowMo: 2000,                    // slows every browser action by 2 seconds
-  },
+     launchOptions: { slowMo: process.env.CI ? 0 : 2000 },
 },
   
 });
